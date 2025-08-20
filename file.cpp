@@ -1,3 +1,4 @@
+// file handling bujna ko lagi simple example ho
 #include <iostream>
 #include <fstream>
 using namespace std;

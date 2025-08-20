@@ -1,46 +1,55 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Height{
+class Height {
+private:
     int meter;
     int centimeter;
 
-    public:
-    //constructor
-Height(int m=0,int cm=0){
-    meter = m;
-    centimeter = cm;
-
-}
-friend Height operator+ (const Height& h1, const Height& h2);
-void display() const {
-    cout << meter << "meters and" << centimeter << "centimeters" << endl;
-}
-};
-Height operator+ (const Height& h1, const Height& h2){
-    Height result;
-
-    result.meter = h1.meter + h2.meter;
-    result.centimeter = h1.centimeter + h2.centimeter;
-
-    if(result.centimeter >= 100){
-        result.meter = result.meter + (result.centimeter / 100);
-        result.centimeter = result.centimeter % 100;
+public:
+    // Constructor
+    Height(int m = 0, int cm = 0) {
+        meter = m;
+        centimeter = cm;
     }
-    return result;
-}
-int main(){
-    Height h1(1,47);
-    Height h2 (3, 88);
-    Height h3 = h1+ h2;
 
-    cout << "First Height" << endl;
+    // Friend function to overload + operator
+    friend Height operator+(const Height& h1, const Height& h2);
+
+    // Function to display height
+    void display() const {
+        cout << meter << " meter " << centimeter << " centimeter" << endl;
+    }
+};
+
+// Friend function definition
+Height operator+(const Height& h1, const Height& h2) {
+    Height temp;
+    temp.meter = h1.meter + h2.meter;
+    temp.centimeter = h1.centimeter + h2.centimeter;
+
+    // Convert centimeters to meters if >= 100
+    if (temp.centimeter >= 100) {
+        temp.meter += temp.centimeter / 100;
+        temp.centimeter = temp.centimeter % 100;
+    }
+
+    return temp;
+}
+
+int main() {
+    Height h1(2, 75);  // 2m 75cm
+    Height h2(1, 50);  // 1m 50cm
+
+    Height h3 = h1 + h2;
+
+    cout << "First height: ";
     h1.display();
 
-    cout << "Second Height" << endl;
+    cout << "Second height: ";
     h2.display();
 
-    cout << "Total Height" << endl;
+    cout << "Sum of heights: ";
     h3.display();
 
     return 0;

@@ -1,3 +1,0 @@
-numbers entered:
-34 45 56 67 45 sum247
-Average:49.4

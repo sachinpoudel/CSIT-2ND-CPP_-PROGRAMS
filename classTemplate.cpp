@@ -1,4 +1,4 @@
-// class template ko simple example mtra ho
+// class template ko simple example mtra ho  
 #include<iostream>
 using namespace std; 
 
@@ -18,6 +18,8 @@ class myPair {
 };
 int main (){
     myPair< int , double> p1(10,20.33);
+    myPair< char , double> p2('A',20.33);
     p1.display();
+    p2.display();
     return 0;
 }

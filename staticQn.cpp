@@ -1,3 +1,4 @@
+// this is the example for static data members and static member function
 #include<iostream>
 
 using namespace std;
